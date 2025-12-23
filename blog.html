@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Blog | Caridina Lab</title>
+  <meta name="description" content="Caridina satış ve blog sayfası. Tank kodları, seçki lotları ve bakım rehberleri."/>
+  <link rel="stylesheet" href="assets/styles.css"/>
+  <script src="assets/app.js"></script>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span style="display:inline-flex;width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));"></span>
+      <span>Caridina Lab</span>
+      <span class="badge">Satış + Blog</span>
+    </a>
+    <div class="links">
+      <a href="shop.html">Mağaza</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">Hakkımızda</a>
+      <a href="contact.html">İletişim</a>
+      <a class="cta" href="contact.html">DM / WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="section">
+    <div class="h2">Blog</div>
+    <div class="muted">Bakım rehberleri + proje günlükleri. SEO için ideal yapı: kısa, net, bol görsel.</div>
+
+    <div style="margin-top:14px" class="searchbar">
+      <span class="muted">🔎</span>
+      <input id="q" placeholder="Örn: su, tds, gh, kargo..." />
+      <button class="btn" id="clear">Temizle</button>
+    </div>
+
+    <div id="list" class="grid grid-2" style="margin-top:14px"></div>
+  </div>
+</div>
+
+<script>
+(async ()=>{
+  const posts = await loadJSON('data/posts.json');
+  const list = document.getElementById('list');
+  const q = document.getElementById('q');
+  const clear = document.getElementById('clear');
+
+  function render(arr){
+    list.innerHTML = arr.map(x => `
+      <div class="card item">
+        <a href="post.html?slug=${encodeURIComponent(x.slug)}">
+          <h3>${x.title}</h3>
+          <p>${x.excerpt}</p>
+          <div class="price">
+            <span class="tag">${x.tags.join(' • ')}</span>
+            <span class="muted small">${x.date}</span>
+          </div>
+        </a>
+      </div>
+    `).join('');
+  }
+
+  function apply(){
+    const term = q.value.trim().toLowerCase();
+    if(!term){ render(posts); return; }
+    const filtered = posts.filter(x=>{
+      const hay = (x.title + " " + x.excerpt + " " + x.tags.join(" ") + " " + x.content.join(" ")).toLowerCase();
+      return hay.includes(term);
+    });
+    render(filtered);
+  }
+
+  q.addEventListener('input', apply);
+  clear.addEventListener('click', ()=>{ q.value=''; apply(); });
+
+  render(posts);
+})();
+</script>
+
+
+<div class="footer">
+  <div class="container">
+    <div class="grid grid-2">
+      <div>
+        <div style="font-weight:800; margin-bottom:8px">Caridina Lab</div>
+        <div class="muted">Caridina satış & üretim günlüğü. Tank kodları, su hedefleri ve seçki mantığı şeffaf.</div>
+        <div class="kv">
+          <a href="policy.html">Canlı Varış & Kargo</a>
+          <a href="kvkk.html">KVKK</a>
+          <a href="terms.html">Mesafeli Satış</a>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <div style="font-weight:750;margin-bottom:6px">Hızlı iletişim</div>
+        <div class="muted small">WhatsApp / Instagram DM bağlantılarını contact.html içinde değiştir.</div>
+        <div class="hr"></div>
+        <div class="small muted">© <span id="year"></span> Caridina Lab • Tüm hakları saklıdır.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

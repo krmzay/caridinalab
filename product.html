@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ürün | Caridina Lab</title>
+  <meta name="description" content="Caridina satış ve blog sayfası. Tank kodları, seçki lotları ve bakım rehberleri."/>
+  <link rel="stylesheet" href="assets/styles.css"/>
+  <script src="assets/app.js"></script>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span style="display:inline-flex;width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));"></span>
+      <span>Caridina Lab</span>
+      <span class="badge">Satış + Blog</span>
+    </a>
+    <div class="links">
+      <a href="shop.html">Mağaza</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">Hakkımızda</a>
+      <a href="contact.html">İletişim</a>
+      <a class="cta" href="contact.html">DM / WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="section">
+    <a class="muted small" href="shop.html">← Mağazaya dön</a>
+    <div id="wrap" style="margin-top:10px"></div>
+  </div>
+</div>
+
+<script>
+(async ()=>{
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  const products = await loadJSON('data/products.json');
+  const p = products.find(x => x.id === id) || products[0];
+
+  const wrap = document.getElementById('wrap');
+  wrap.innerHTML = `
+    <div class="grid grid-2">
+      <div class="card" style="padding:14px">
+        <img src="${p.image}" alt="${p.name}"/>
+        <div class="hr"></div>
+        <div class="muted small">Fotoğraf/Video: buraya gerçek çekimlerini koyunca şablon otomatik uyum sağlar.</div>
+      </div>
+      <div>
+        <h1 style="margin:0 0 8px; font-size:28px">${p.name}</h1>
+        <div class="muted">${p.desc}</div>
+        <div class="hr"></div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+          <span class="tag">Grade: ${p.grade}</span>
+          <span class="tag">Stok: ${p.stock}</span>
+          <span class="tag">${p.tags.join(' • ')}</span>
+        </div>
+        <div class="hr"></div>
+        <div style="font-weight:900; font-size:24px">${formatTRY(p.price)}</div>
+        <div class="muted small" style="margin-top:6px">Ödeme altyapısı eklenene kadar: DM / WhatsApp ile sipariş.</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <a class="cta" href="contact.html">DM / WhatsApp ile al</a>
+          <a class="btn" href="policy.html">Canlı varış şartları</a>
+        </div>
+        <div class="notice" style="margin-top:14px">
+          İpucu: Ürün açıklamasına mutlaka <b>tank kodu</b>, <b>su hedefleri</b> ve <b>adaptasyon önerisi</b> koy.
+        </div>
+      </div>
+    </div>
+  `;
+})();
+</script>
+
+
+<div class="footer">
+  <div class="container">
+    <div class="grid grid-2">
+      <div>
+        <div style="font-weight:800; margin-bottom:8px">Caridina Lab</div>
+        <div class="muted">Caridina satış & üretim günlüğü. Tank kodları, su hedefleri ve seçki mantığı şeffaf.</div>
+        <div class="kv">
+          <a href="policy.html">Canlı Varış & Kargo</a>
+          <a href="kvkk.html">KVKK</a>
+          <a href="terms.html">Mesafeli Satış</a>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <div style="font-weight:750;margin-bottom:6px">Hızlı iletişim</div>
+        <div class="muted small">WhatsApp / Instagram DM bağlantılarını contact.html içinde değiştir.</div>
+        <div class="hr"></div>
+        <div class="small muted">© <span id="year"></span> Caridina Lab • Tüm hakları saklıdır.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+
+</body>
+</html>

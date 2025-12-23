@@ -1,0 +1,44 @@
+[
+  {
+    "id": "red-galaxy-fishbone",
+    "name": "Red Galaxy Fishbone (Seçki Lot)",
+    "price": 1490,
+    "stock": 8,
+    "grade": "A/S",
+    "tags": [
+      "TB",
+      "Fishbone",
+      "Kırmızı"
+    ],
+    "image": "assets/img/product1.jpg",
+    "desc": "Kırmızı taban, bacak çizgisi güçlü. Tank kodu: T2-BOA. Su hedefi: pH 6.0–6.6 | GH 4–6 | KH 0–1 | TDS 120–135."
+  },
+  {
+    "id": "black-panda-oe",
+    "name": "Black Panda OE (Genetik Havuz)",
+    "price": 990,
+    "stock": 6,
+    "grade": "A",
+    "tags": [
+      "TB",
+      "Panda",
+      "OE"
+    ],
+    "image": "assets/img/product1.jpg",
+    "desc": "Orange eye taşıyan bireyler. Desen stabilitesine göre seçki yapılır. Canlı varış şartları ürün sayfasındadır."
+  },
+  {
+    "id": "boa-carry-male",
+    "name": "Boa Taşıyıcı ♂ (Proje Adayı)",
+    "price": 1190,
+    "stock": 2,
+    "grade": "Proje",
+    "tags": [
+      "Boa",
+      "Taşıyıcı",
+      "♂"
+    ],
+    "image": "assets/img/product3.svg",
+    "desc": "Boa proje tankları için genetik katkı adayı. Stok çok sınırlı."
+  }
+]
