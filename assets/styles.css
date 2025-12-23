@@ -42,7 +42,7 @@ img{max-width:100%;height:auto;border-radius:14px}
 .nav-inner{
   max-width:var(--max);
   margin:0 auto;
-  padding:14px 24px;
+  padding:24px;
   display:flex;
   align-items:center;
   gap:18px
