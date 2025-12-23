@@ -6,52 +6,53 @@
   <title>Caridina Lab | Blog</title>
   <meta name="description" content="Caridina blog sayfası. Tank kodları, seçki lotları ve bakım rehberleri."/>
   <link rel="stylesheet" href="assets/styles.css"/>
-  <script src="assets/app.js"></script>
 </head>
 <body>
 
 <div class="nav">
   <div class="nav-inner">
-    <a class="brand" href="index.html" style="display:flex; align-items:center; gap:10px;">
-  <img src="assets/img/logo.png" alt="CaridinaLab" style="height:120px;">
-  <span style="font-weight:700; font-size:18px;">CaridinaLab</span>
-</a>
 
+    <a class="brand" href="index.html" style="display:flex; align-items:center; gap:12px;">
+      <img src="assets/img/logo.png" alt="CaridinaLab"
+           style="width:84px; height:84px; border-radius:18px; object-fit:cover;">
+      <span style="font-weight:800; font-size:18px;">CaridinaLab</span>
+    </a>
 
-     <div class="links">
+    <div class="links">
       <a class="btn btn-grad" href="shop.html">Mağazaya Git</a>
       <a class="btn btn-grad" href="blog.html">Blogu Oku</a>
       <a class="btn btn-grad" href="caridina-dunyasi.html">Caridina Dünyası</a>
 
-
       <a href="about.html">Hakkımızda</a>
       <a href="contact.html">İletişim</a>
-      </div>
+    </div>
+
   </div>
 </div>
-
 
 <div class="container">
   <div class="hero">
     <div>
-      
-<h1 class="h-title">
-  Caridina üretim günlüğü<br/>tek yerde.
-</h1>
 
-      <p class="h-sub"> Her ürün: tank kodu, su hedefi, açıklama. Blog tarafı: bakım rehberleri + proje günlükleri.</p>
+      <h1 class="h-title">Caridina üretim günlüğü<br/>tek yerde.</h1>
+
+      <p class="h-sub">
+        Her ürün: tank kodu, su hedefi, açıklama. Blog tarafı: bakım rehberleri + proje günlükleri.
+      </p>
+
       <div style="display:flex; gap:10px; flex-wrap:wrap">
         <a class="cta" href="shop.html">Mağazaya Git</a>
         <a class="btn" href="blog.html">Blogu Oku</a>
-        
       </div>
+
       <div class="pills">
         <span class="pill">TB / PRL / Boa / Tiger</span>
         <span class="pill">Tank kodu ile şeffaf takip</span>
         <span class="pill">RO + GH+ yaklaşımı</span>
-        
       </div>
+
     </div>
+
     <div class="card hero-card">
       <img src="assets/img/hero.svg" alt="Caridina vitrin görseli"/>
       <div class="notice" style="margin-top:12px">
@@ -83,6 +84,7 @@
   </div>
 </div>
 
+<script src="assets/app.js"></script>
 <script>
 (async ()=>{
   const products = await loadJSON('data/products.json');
@@ -97,7 +99,6 @@
         <p>${p.desc}</p>
         <div class="price">
           <span class="tag">${p.grade} • Stok: ${p.stock}</span>
-          
         </div>
       </a>
     </div>
@@ -119,7 +120,6 @@
 })();
 </script>
 
-
 <div class="footer">
   <div class="container">
     <div class="grid grid-2">
@@ -139,7 +139,11 @@
     </div>
   </div>
 </div>
-<script src="assets/app.js"></script>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
+
